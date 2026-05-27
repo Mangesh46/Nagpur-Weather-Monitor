@@ -1,6 +1,3 @@
-Absolutely. Here is your content rewritten as a clean, properly structured `README.md` in the same style and format, ready to paste into GitHub:
-
-````md
 # 🌡️ Nagpur Weather Monitor v4 — Redesign
 
 > Fine-grained, multi-zone weather monitoring for Nagpur with **Apache Kafka + ZooKeeper**, an **AI Heatwave Engine** (IMD criteria + weighted linear regression), and a **3D React frontend**.
@@ -15,40 +12,46 @@ Absolutely. Here is your content rewritten as a clean, properly structured `READ
 
 ## 🏗️ Architecture
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│                    GitHub Pages (CDN)                       │
-│                  React 18 SPA — Frontend                    │
-│  Overview · Map & 3D · Forecast · 🔥 AI Heatwave (4 tabs)   │
-└───────────────────────┬─────────────────────────────────────┘
-                        │  REST / JSON (every 30s)
-┌───────────────────────▼─────────────────────────────────────┐
-│           HuggingFace Spaces — Docker Backend               │
-│                    FastAPI 2.0 (Python 3.12)                │
-│  ┌─────────────────┐  ┌───────────────┐  ┌──────────────┐   │
-│  │ Weather Collector│  │ Kafka Producer│  │  AI Service  │   │
-│  │  (OWM API — 10  │  │   & Consumer  │  │ IMD + LinReg │   │
-│  │   zones, 60s)   │  │  (3 topics)   │  │  Heatwave    │   │
-│  └─────────────────┘  └───────────────┘  └──────┬───────┘   │
-│                              │                    │           │
-│                    ┌─────────┘             ┌──────┘           │
-│                    ▼                       ▼                  │
-│              Kafka Topics             SQLite DB               │
-│           (ZooKeeper 3.9)          (5-day history,            │
-│         weather.current            Docker volume)             │
-│         weather.forecast                                     │
-│         weather.alerts                                       │
-└─────────────────────────────────────────────────────────────┘
-                        │
-           ┌────────────▼───────────┐
-           │     Docker Compose     │
-           │  ZooKeeper → Kafka     │
-           │  Kafka UI  (port 8080) │
-           └────────────────────────┘
-````
+```mermaid
+flowchart TD
+    %% Frontend CDN Layer
+    subgraph Frontend [GitHub Pages CDN]
+        A[React 18 SPA — Frontend<br/>Overview · Map & 3D · Forecast · 🔥 AI Heatwave]
+    end
 
----
+    %% HuggingFace Core Container Backend
+    subgraph Backend [HuggingFace Spaces — Docker Backend]
+        B[FastAPI 2.0 Python 3.12]
+        
+        subgraph Engines [Internal App Modules]
+            C[Weather Collector<br/>Open-Meteo API — 10 zones, 60s]
+            D[Kafka Producer & Consumer<br/>3 topics async thread]
+            E[AI Service<br/>IMD + LinReg Heatwave Engine]
+        end
+        
+        F[(SQLite DB<br/>5-day history, Docker volume)]
+    end
 
+    %% Streaming Message Bus Pipeline
+    subgraph Pipeline [External / Managed Streaming]
+        G[Kafka Topics ZooKeeper 3.9 / Upstash<br/>• weather.current<br/>• weather.forecast<br/>• weather.alerts]
+    end
+
+    %% Logical Connections
+    A -- "REST / JSON (every 30s)" --> B
+    B --> C
+    B --> D
+    B --> E
+    C --> D
+    D <--> G
+    E --> F
+    
+    %% Semantic Theme Styling
+    style Frontend fill:#111827,stroke:#3b82f6,stroke-width:2px,color:#fff
+    style Backend fill:#111827,stroke:#10b981,stroke-width:2px,color:#fff
+    style Pipeline fill:#111827,stroke:#f59e0b,stroke-width:2px,color:#fff
+    style F fill:#1f2937,stroke:#6b7280,color:#fff
+```
 ## ✨ Features
 
 | Tab                | What you get                                                                                             |

@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/css/main.2e662a65.css",
-    "main.js": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/js/main.8ab21a42.js",
-    "static/js/222.b47dba16.chunk.js": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/js/222.b47dba16.chunk.js",
-    "static/js/289.f94a6790.chunk.js": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/js/289.f94a6790.chunk.js",
-    "index.html": "/Mangesh46/Nagpur-Weather-Monitor.github.io/index.html",
-    "main.2e662a65.css.map": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/css/main.2e662a65.css.map",
-    "main.8ab21a42.js.map": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/js/main.8ab21a42.js.map",
-    "222.b47dba16.chunk.js.map": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/js/222.b47dba16.chunk.js.map",
-    "289.f94a6790.chunk.js.map": "/Mangesh46/Nagpur-Weather-Monitor.github.io/static/js/289.f94a6790.chunk.js.map"
+    "main.css": "/Nagpur-Weather-Monitor/static/css/main.2e662a65.css",
+    "main.js": "/Nagpur-Weather-Monitor/static/js/main.433f23df.js",
+    "static/js/222.b47dba16.chunk.js": "/Nagpur-Weather-Monitor/static/js/222.b47dba16.chunk.js",
+    "static/js/289.f94a6790.chunk.js": "/Nagpur-Weather-Monitor/static/js/289.f94a6790.chunk.js",
+    "index.html": "/Nagpur-Weather-Monitor/index.html",
+    "main.2e662a65.css.map": "/Nagpur-Weather-Monitor/static/css/main.2e662a65.css.map",
+    "main.433f23df.js.map": "/Nagpur-Weather-Monitor/static/js/main.433f23df.js.map",
+    "222.b47dba16.chunk.js.map": "/Nagpur-Weather-Monitor/static/js/222.b47dba16.chunk.js.map",
+    "289.f94a6790.chunk.js.map": "/Nagpur-Weather-Monitor/static/js/289.f94a6790.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2e662a65.css",
-    "static/js/main.8ab21a42.js"
+    "static/js/main.433f23df.js"
   ]
 }

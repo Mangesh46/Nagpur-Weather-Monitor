@@ -179,7 +179,7 @@ Open `http://localhost:3000` — Kafka UI available at `http://localhost:8080`
 | `KAFKA_BOOTSTRAP_SERVERS` | Upstash Kafka endpoint |
 | `PORT` | `7860` |
 
-> **Why Upstash?** HuggingFace Spaces runs a single Docker container, so it cannot host ZooKeeper + Kafka alongside FastAPI. Upstash provides managed Kafka on a free tier that works seamlessly here.
+> **Why Upstash?** HuggingFace Spaces runs a single Docker container, so it cannot host ZooKeeper + Kafka alongside FastAPI. Upstash provides managed Kafka on a free tier that works seamlessly here. 
 
 ### Frontend — GitHub Pages
 
@@ -271,7 +271,6 @@ nagpur-redesign/
 **Mangesh Sarde** — RKNEC, Electronics & Communications Engineering, Sem VI
 
 - 🐙 GitHub: [github.com/Mangesh46](https://github.com/Mangesh46)
-- 🌐 Portfolio: [profile-henna-delta.vercel.app](https://profile-henna-delta.vercel.app)
 - 💼 LinkedIn: [linkedin.com/in/mangesh-sarde](https://linkedin.com/in/mangesh-sarde)
 - 📧 Email: mangeshsarde6@gmail.com
 

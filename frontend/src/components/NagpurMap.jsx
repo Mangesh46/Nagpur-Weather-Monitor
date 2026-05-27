@@ -3,7 +3,6 @@
 import React, { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
 
 const NAGPUR = [21.1458, 79.0882];
 
@@ -78,18 +77,14 @@ function markerColor(zone, mode) {
   return "#1d4ed8";
 }
 
-function markerValue(zone, mode) {
-  if (mode === "temperature") return `${(zone.temperature_c ?? 0).toFixed(1)}°C`;
-  if (mode === "humidity")    return `${zone.humidity_pct ?? 0}%`;
-  return `${(zone.rain_1h_mm ?? 0).toFixed(1)}mm`;
-}
+
 
 export default function NagpurMap({ points, mode = "temperature" }) {
   return (
     <MapContainer
       center={NAGPUR}
       zoom={11}
-      style={{ width: "100%", height: "420px", borderRadius: "12px" }}
+      style={{ width: "100%", height: "100%", borderRadius: "0" }}
       zoomControl={true}
     >
       {/* Dark tile layer */}
@@ -114,7 +109,7 @@ export default function NagpurMap({ points, mode = "temperature" }) {
           }}
         >
           <Popup>
-            <div style={{ fontFamily: "monospace", fontSize: 13, minWidth: 160 }}>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, minWidth: 160 }}>
               <strong style={{ fontSize: 15 }}>{z.zone}</strong>
               <hr style={{ margin: "6px 0", borderColor: "#e2e8f0" }} />
               <div>🌡️ <b>{(z.temperature_c ?? 0).toFixed(1)}°C</b></div>

@@ -2,7 +2,7 @@
   "name": "nagpur-weather-monitor",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://<YOUR_GITHUB_USERNAME>.github.io/nagpur-weather-monitor",
+  "homepage": "https://github.com/Mangesh46/Nagpur-Weather-Monitor.github.io",
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

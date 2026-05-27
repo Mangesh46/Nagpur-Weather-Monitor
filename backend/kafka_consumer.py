@@ -40,27 +40,28 @@ def _consume_loop():
             logger.info("Kafka consumer connected.")
             break
         except NoBrokersAvailable:
-            logger.warning("Consumer: Kafka not ready, retrying in 5s…")
+            logger.warning("Consumer: Kafka not ready, retrying in 5s...")
             time.sleep(5)
 
-    for msg in consumer:
-        try:
-            with _lock:
-                if msg.topic == TOPIC_CURRENT:
-                    zone = msg.value.get("zone", "unknown")
-                    state["current"][zone] = msg.value
-                    state["history"].appendleft(msg.value)
-                    state["last_update"] = datetime.now(timezone.utc).isoformat()
-                    history_store.save_reading(msg.value)
+    while True:
+        for msg in consumer:
+            try:
+                with _lock:
+                    if msg.topic == TOPIC_CURRENT:
+                        zone = msg.value.get("zone", "unknown")
+                        state["current"][zone] = msg.value
+                        state["history"].appendleft(msg.value)
+                        state["last_update"] = datetime.now(timezone.utc).isoformat()
+                        history_store.save_reading(msg.value)
 
-                elif msg.topic == TOPIC_FORECAST:
-                    state["forecast"] = msg.value.get("items", [])
+                    elif msg.topic == TOPIC_FORECAST:
+                        state["forecast"] = msg.value.get("items", [])
 
-                elif msg.topic == TOPIC_ALERTS:
-                    state["alerts"].appendleft(msg.value)
+                    elif msg.topic == TOPIC_ALERTS:
+                        state["alerts"].appendleft(msg.value)
 
-        except Exception as exc:
-            logger.error("Consumer error: %s", exc)
+            except Exception as exc:
+                logger.error("Consumer error: %s", exc)
 
 
 def start_consumer():

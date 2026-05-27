@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid,
+  LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, ReferenceLine, Legend,
 } from "recharts";
 
@@ -18,7 +18,6 @@ const LEVEL_CFG = {
   4: { color: "#dc2626", bg: "#200000", border: "#7f1d1d", emoji: "☠️", badge: "EXTREME" },
 };
 
-function lerp(a, b, t) { return a + (b - a) * t; }
 
 // Thermometer gauge SVG
 function ThermometerGauge({ tempC, maxTemp = 50, label }) {
@@ -50,7 +49,7 @@ function ThermometerGauge({ tempC, maxTemp = 50, label }) {
           />
         ))}
       </svg>
-      <span style={{ fontFamily: "'Orbitron', monospace", fontSize: 16, color: cfg.color, fontWeight: 700 }}>
+      <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: 16, color: cfg.color, fontWeight: 700 }}>
         {tempC?.toFixed(1)}°C
       </span>
       <span style={{ fontSize: 10, color: "#64748b", letterSpacing: 1 }}>{label}</span>
@@ -77,7 +76,7 @@ function HeatwaveBadge({ level, label }) {
     >
       <span style={{ fontSize: 24 }}>{cfg.emoji}</span>
       <div>
-        <div style={{ fontFamily: "'Orbitron', monospace", color: cfg.color, fontSize: 16, fontWeight: 700 }}>
+        <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, color: cfg.color, fontSize: 16, fontWeight: 700 }}>
           {cfg.badge}
         </div>
         <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 2 }}>{label}</div>
@@ -118,7 +117,7 @@ function DayTimeline({ days }) {
               <div style={{ fontSize: 11, color: "#64748b", marginBottom: 6 }}>
                 {new Date(d.date + "T00:00:00").toLocaleDateString("en-IN", { weekday: "short", month: "short", day: "numeric" })}
               </div>
-              <div style={{ fontFamily: "'Orbitron', monospace", color: cfg.color, fontSize: 18, fontWeight: 700 }}>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, color: cfg.color, fontSize: 18, fontWeight: 700 }}>
                 {d.max_c?.toFixed(1)}°C
               </div>
               <div style={{ fontSize: 10, color: cfg.color, marginTop: 4, letterSpacing: 1 }}>
@@ -209,7 +208,7 @@ function ZoneGrid({ zoneSummaries }) {
             }}
           >
             <div style={{ fontSize: 10, color: "#64748b", letterSpacing: 1 }}>{zs.zone}</div>
-            <div style={{ fontFamily: "'Orbitron', monospace", color: cfg.color, fontSize: 16, fontWeight: 700, marginTop: 2 }}>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, color: cfg.color, fontSize: 16, fontWeight: 700, marginTop: 2 }}>
               {latest.max_c?.toFixed(1)}°C
             </div>
             <div style={{ fontSize: 10, color: cfg.color, marginTop: 2 }}>{cfg.badge} {cfg.emoji}</div>
@@ -259,7 +258,7 @@ export default function AiHeatwavePanel() {
       {/* Header row */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
         <div>
-          <h2 style={{ fontFamily: "'Orbitron', monospace", fontSize: 14, color: "#94a3b8", letterSpacing: 2, margin: 0 }}>
+          <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: 14, color: "#94a3b8", letterSpacing: 2, margin: 0 }}>
             AI HEATWAVE INTELLIGENCE
           </h2>
           <p style={{ fontSize: 10, color: "#475569", marginTop: 4, letterSpacing: 1 }}>
@@ -271,7 +270,7 @@ export default function AiHeatwavePanel() {
           disabled={loading}
           style={{
             background: "rgba(6,182,212,0.1)", border: "1px solid #06b6d430",
-            borderRadius: 8, color: "#06b6d4", fontFamily: "'Space Mono', monospace",
+            borderRadius: 8, color: "#06b6d4", fontFamily: "'DM Mono', monospace",
             fontSize: 11, padding: "7px 16px", cursor: "pointer", letterSpacing: 1,
           }}
         >
@@ -413,7 +412,7 @@ function InfoRow({ label, value, color }) {
 
 function SectionTitle({ children }) {
   return (
-    <p style={{ fontFamily: "'Orbitron', monospace", fontSize: 11, color: "#94a3b8",
+    <p style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: 11, color: "#94a3b8",
       letterSpacing: 2, textTransform: "uppercase", marginBottom: 12 }}>
       {children}
     </p>
